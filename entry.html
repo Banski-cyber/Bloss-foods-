@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Bloss Foods</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display:flex; align-items:center; justify-content:center; height:100vh; background: var(--midnight);">
+    <div class="card" style="max-width:380px; width:90%; border: 1px solid var(--gold);">
+        <div class="logo" style="text-align: center; margin-bottom: 10px;">BLOSS <span>FOODS</span></div>
+        <p style="text-align: center; font-size: 0.9rem; opacity: 0.8; margin-bottom: 25px;">Enter details to access the premium store.</p>
+        
+        <form onsubmit="handleEntry(event)">
+            <label style="font-size: 0.8rem; color: var(--gold-bright);">Full Name</label>
+            <input type="text" id="user-name" placeholder="Enter Name" required class="qty-input">
+            
+            <label style="font-size: 0.8rem; color: var(--gold-bright);">WhatsApp Number</label>
+            <input type="tel" id="user-phone" placeholder="080 000 0000" required class="qty-input" 
+                   oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            
+            <button type="submit" class="add-btn" style="margin-top: 10px;">Enter Store</button>
+        </form>
+    </div>
+
+    <script>
+        function handleEntry(e) {
+            e.preventDefault();
+            const user = { 
+                name: document.getElementById('user-name').value, 
+                phone: document.getElementById('user-phone').value 
+            };
+            localStorage.setItem('bloss_user', JSON.stringify(user));
+            window.location.href = "index.html"; 
+        }
+
+        window.onload = () => {
+            if(localStorage.getItem('bloss_user')) window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

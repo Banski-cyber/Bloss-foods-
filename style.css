@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --midnight: #1a0505;
+    --wine-deep: #4a0e0e;
+    --gold: #c5a059;
+    --gold-bright: #f1d592;
+    --soft-white: #e0e0e0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: var(--midnight); color: var(--soft-white); line-height:1.6; }
+
+nav { background: var(--midnight); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--gold); position: sticky; top:0; z-index:100; }
+.logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+.logo span { color: var(--gold); }
+
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 30px 5%; }
+.card { background: var(--wine-deep); padding: 20px; border-radius: 15px; text-align: center; border: 1px solid rgba(197, 160, 89, 0.2); }
+.price-tag { color: var(--gold-bright); font-size: 1.3rem; font-weight: 600; margin: 10px 0; }
+
+.qty-input { width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--gold); color: white; border-radius: 5px; outline: none; }
+.add-btn { background: var(--gold); color: black; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; }
+.add-btn:hover { background: var(--gold-bright); }
+
+.cart-sidebar { position: fixed; right: -350px; top: 0; width: 320px; height: 100%; background: var(--midnight); border-left: 1px solid var(--gold); padding: 20px; transition: 0.3s; z-index: 200; overflow-y:auto; }
+.cart-sidebar.active { right: 0; }
+
+/* AI Chatbot Specific Styles */
+.chat-container { display: none; position: fixed; bottom: 100px; right: 25px; width: 320px; background: var(--midnight); border: 1px solid var(--gold); border-radius: 15px; overflow: hidden; z-index: 3000; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+#chat-box { height: 250px; padding: 15px; overflow-y: auto; font-size: 0.9rem; background: #000; color: #fff; text-align: left; }
+.chat-btn { position: fixed; bottom: 25px; right: 25px; background: var(--gold); border: none; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; z-index: 3001; font-size: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }

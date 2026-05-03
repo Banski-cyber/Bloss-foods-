@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | Bloss Foods</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">BLOSS <span>FOODS</span></div>
+        <div style="display:flex; gap:15px; align-items:center;">
+            <a href="index.html" style="color:var(--soft-white); text-decoration:none; font-size:0.9rem;">Home</a>
+            <button onclick="toggleCart()" class="add-btn" style="width:auto; padding:10px 20px;">Basket (<span id="cart-count">0</span>)</button>
+        </div>
+    </nav>
+
+    <div class="product-grid">
+        <div class="card">
+            <h3>Rice (Congo)</h3><p class="price-tag">₦1,900</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-rice">--</span></p>
+            <input type="number" id="qty-rice" value="1" min="1" class="qty-input">
+            <div id="btn-rice"></div>
+        </div>
+
+        <div class="card">
+            <h3>Beans (Congo)</h3><p class="price-tag">₦1,700</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-beans">--</span></p>
+            <input type="number" id="qty-beans" value="1" min="1" class="qty-input">
+            <div id="btn-beans"></div>
+        </div>
+
+        <div class="card">
+            <h3>Garri (Congo)</h3><p class="price-tag">₦700</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-garri">--</span></p>
+            <input type="number" id="qty-garri" value="1" min="1" class="qty-input">
+            <div id="btn-garri"></div>
+        </div>
+
+        <div class="card">
+            <h3>Spaghetti</h3><p class="price-tag">₦1,100</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-spag">--</span></p>
+            <input type="number" id="qty-spag" value="1" min="1" class="qty-input">
+            <div id="btn-spag"></div>
+        </div>
+
+        <div class="card">
+            <h3>Noodles (Single)</h3><p class="price-tag">₦250</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-n_single">--</span></p>
+            <input type="number" id="qty-n_single" value="1" min="1" class="qty-input">
+            <div id="btn-n_single"></div>
+        </div>
+
+        <div class="card">
+            <h3>Noodles (Carton)</h3><p class="price-tag">₦10,000</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-n_carton">--</span></p>
+            <input type="number" id="qty-n_carton" value="1" min="1" class="qty-input">
+            <div id="btn-n_carton"></div>
+        </div>
+
+        <div class="card">
+            <h3>Eggs</h3><p class="price-tag">₦250 - ₦300</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-eggs">--</span></p>
+            <select id="unit-eggs" class="qty-input">
+                <option value="250">Medium - ₦250</option>
+                <option value="300">Large - ₦300</option>
+            </select>
+            <input type="number" id="qty-eggs" value="1" min="1" class="qty-input" style="margin-top:10px;">
+            <div id="btn-eggs"></div>
+        </div>
+
+        <div class="card">
+            <h3>Palm Oil (Full)</h3><p class="price-tag">₦1,600</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-p_oil">--</span></p>
+            <input type="number" id="qty-p_oil" value="1" min="1" class="qty-input">
+            <div id="btn-p_oil"></div>
+        </div>
+
+        <div class="card">
+            <h3>Veg Oil (Full)</h3><p class="price-tag">₦2,000</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-v_oil">--</span></p>
+            <input type="number" id="qty-v_oil" value="1" min="1" class="qty-input">
+            <div id="btn-v_oil"></div>
+        </div>
+
+        <div class="card">
+            <h3>Egusi (1 Cup)</h3><p class="price-tag">₦600</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-egusi">--</span></p>
+            <input type="number" id="qty-egusi" value="1" min="1" class="qty-input">
+            <div id="btn-egusi"></div>
+        </div>
+
+        <div class="card">
+            <h3>Maggi</h3><p class="price-tag">₦450</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-maggi">--</span></p>
+            <input type="number" id="qty-maggi" value="1" min="1" class="qty-input">
+            <div id="btn-maggi"></div>
+        </div>
+
+        <div class="card">
+            <h3>Salt</h3><p class="price-tag">₦200</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-salt">--</span></p>
+            <input type="number" id="qty-salt" value="1" min="1" class="qty-input">
+            <div id="btn-salt"></div>
+        </div>
+
+        <div class="card">
+            <h3>Tomato Paste</h3><p class="price-tag">₦200</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-tomato">--</span></p>
+            <input type="number" id="qty-tomato" value="1" min="1" class="qty-input">
+            <div id="btn-tomato"></div>
+        </div>
+
+        <div class="card">
+            <h3>Pepper</h3><p class="price-tag">₦200</p>
+            <p style="font-size:0.8rem;">Available: <span id="stock-pepper">--</span></p>
+            <input type="number" id="qty-pepper" value="1" min="1" class="qty-input">
+            <div id="btn-pepper"></div>
+        </div>
+    </div>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <h3 style="color:var(--gold-bright);">Your Basket</h3>
+            <button onclick="toggleCart()" style="background:none; border:none; color:white; font-size:2rem; cursor:pointer;">&times;</button>
+        </div>
+        <div id="side-cart-items"></div>
+        <div style="border-top:1px solid var(--gold); margin-top:20px; padding-top:20px;">
+            <h4>Total: ₦<span id="side-total">0</span></h4>
+            <a href="checkout.html" class="add-btn" style="display:block; text-align:center; text-decoration:none; margin-top:15px;">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
