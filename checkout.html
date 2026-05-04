@@ -1,59 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>Checkout | Bloss Foods</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Review | Bloss Foods</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <nav>
         <div class="logo">BLOSS <span>FOODS</span></div>
-        <a href="shop.html" style="color:var(--gold); text-decoration:none;">← Back to Shop</a>
+        <a href="index.html" style="color: var(--gold); text-decoration: none; font-size: 0.8rem;">← Back to Shop</a>
     </nav>
 
-    <main style="max-width:600px; margin:40px auto; padding:20px;">
-        <div class="card">
-            <h2 style="color:var(--gold-bright);">Order Review</h2>
-            <div id="side-cart-items"></div>
-            <div style="border-top:1px solid #333; margin-top:15px; padding-top:10px;">
-                <div style="display:flex; justify-content:space-between;">
-                    <span>Subtotal:</span><span>₦<span id="side-total">0</span></span>
+    <div class="checkout-wrapper">
+
+        <div class="order-review-container">
+            <h3 style="color: var(--gold); text-align: center; margin-bottom: 15px;">Order Review</h3>
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;">
+                <span>1x Rice (Congo)</span>
+                <span style="color: #ff4d4d; cursor: pointer;">&times;</span>
+            </div>
+            <div style="margin-top: 15px;">
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Subtotal:</span>
+                    <span>₦1,900</span>
                 </div>
-                <div style="display:flex; justify-content:space-between; color:var(--gold-bright); font-weight:bold;">
-                    <span>Delivery Fee:</span><span id="live-fee">Check below...</span>
+                <div style="display: flex; justify-content: space-between; color: var(--gold-bright);">
+                    <small>Delivery Fee:</small>
+                    <small>Check below...</small>
                 </div>
             </div>
         </div>
 
-        <div class="card" style="margin-top:20px; text-align:left;">
-            <h3>Delivery Details</h3>
-            <p style="font-size:0.75rem; color:var(--gold);">* FREE for school hostels. ₦500 for off-campus.</p>
-            <label style="color:var(--gold); font-size:0.8rem;">Your Name</label>
-            <input type="text" id="cust-name" class="qty-input">
-            
-            <label style="color:var(--gold); font-size:0.8rem;">Detailed Address (Hostel & Room No)</label>
-            <textarea id="cust-location" placeholder="e.g. Mandela Hostel, Room 202" class="qty-input" style="height:100px;" oninput="updateLiveFee()"></textarea>
-            
-            <button class="add-btn" onclick="sendOrder()">Confirm on WhatsApp</button>
-        </div>
-    </main>
+        <div class="delivery-details-container">
+            <h3 style="color: var(--gold); text-align: center;">Delivery Details</h3>
+            <p style="font-size: 0.65rem; color: var(--gold-bright); text-align: center; margin-bottom: 15px;">
+                * FREE for school hostels. ₦500 for off-campus.
+            </p>
 
-    <script src="script.js"></script>
-    <script>
-        function updateLiveFee() {
-            const loc = document.getElementById('cust-location').value.toLowerCase();
-            const feeDisp = document.getElementById('live-fee');
-            const paidAreas = ['oluwo', 'harmony', 'accord', 'kofesu', 'camp', 'isolu'];
-            const isPaid = paidAreas.some(area => loc.includes(area));
-            
-            if (isPaid) feeDisp.innerHTML = "<span style='color:red;'>₦500</span>";
-            else if (loc.includes('hostel')) feeDisp.innerHTML = "<span style='color:green;'>FREE</span>";
-            else feeDisp.innerText = "₦500";
-        }
-        window.onload = () => { 
-            const u = JSON.parse(localStorage.getItem('bloss_user')) || {};
-            if(u.name) document.getElementById('cust-name').value = u.name;
-            updateUI(); 
-        };
-    </script>
+            <label style="font-size: 0.8rem;">Your Name</label>
+            <input type="text" placeholder="Enter your name">
+
+            <label style="font-size: 0.8rem;">Detailed Address (Hostel & Room No)</label>
+            <textarea rows="3" placeholder="e.g. Mandela Hostel, Room 202"></textarea>
+
+            <button class="confirm-btn">Confirm on WhatsApp</button>
+        </div>
+
+    </div>
+
 </body>
 </html>
