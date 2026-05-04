@@ -5,10 +5,10 @@ let cart = JSON.parse(localStorage.getItem('bloss_cart')) || [];
 
 // The master list of all products
 const defaultInventory = { 
-    rice: 50, beans: 50, garri: 60, spag: 40, 
-    n_single: 100, n_carton: 10, 
-    eggs: 60, p_oil: 40, v_oil: 40, egusi: 30,
-    maggi: 200, salt: 100, tomato: 100, pepper: 100 
+    rice: 100, beans: 100, garri: 60, spag: 70, 
+    n_single: 200, n_carton: 30, 
+    eggs: 60, p_oil: 50, v_oil: 50, egusi: 80,
+    maggi: 150, salt: 100, tomato: 100, pepper: 100 
 };
 
 let inventory = JSON.parse(localStorage.getItem('bloss_inventory'));
