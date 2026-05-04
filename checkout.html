@@ -24,7 +24,7 @@
             <div style="margin-top: 15px;">
                 <div style="display: flex; justify-content: space-between;">
                     <span>Subtotal:</span>
-                    <span>₦1,900</span>
+                    <span id="order-total">₦1,900</span>
                 </div>
                 <div style="display: flex; justify-content: space-between; color: var(--gold-bright);">
                     <small>Delivery Fee:</small>
@@ -40,15 +40,45 @@
             </p>
 
             <label style="font-size: 0.8rem;">Your Name</label>
-            <input type="text" placeholder="Enter your name">
+            <input type="text" id="cust-name" placeholder="Enter your name">
 
             <label style="font-size: 0.8rem;">Detailed Address (Hostel & Room No)</label>
-            <textarea rows="3" placeholder="e.g. Mandela Hostel, Room 202"></textarea>
+            <textarea id="cust-address" rows="3" placeholder="e.g. Mandela Hostel, Room 202"></textarea>
 
-            <button class="confirm-btn">Confirm on WhatsApp</button>
+            <button class="confirm-btn" onclick="sendToWhatsApp()">Confirm on WhatsApp</button>
         </div>
 
     </div>
+
+    <script>
+        function sendToWhatsApp() {
+            // Your number formatted for the WhatsApp API (Country Code + Number minus the first 0)
+            const phoneNumber = "2349033448814"; 
+
+            // Grabbing the information the user typed in
+            const name = document.getElementById('cust-name').value;
+            const address = document.getElementById('cust-address').value;
+            const total = document.getElementById('order-total').innerText;
+
+            // Ensure the user actually filled out the form before sending
+            if (name === "" || address === "") {
+                alert("Please enter your name and address before confirming.");
+                return;
+            }
+
+            // Formatting the message that will appear in your WhatsApp chat
+            const message = `*New Order from Bloss Foods*%0A%0A` +
+                            `*Name:* ${name}%0A` +
+                            `*Address:* ${address}%0A%0A` +
+                            `*Order Detail:* 1x Rice (Congo)%0A` +
+                            `*Subtotal:* ${total}%0A%0A` +
+                            `Please confirm my order!`;
+
+            // Opening the WhatsApp link in a new tab
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
 
 </body>
 </html>
