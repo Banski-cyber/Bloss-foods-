@@ -3,7 +3,6 @@
 // 1. GLOBAL STATE & AUTO-FIX CACHE
 let cart = JSON.parse(localStorage.getItem('bloss_cart')) || [];
 
-// The master list of all products
 const defaultInventory = { 
     rice: 100, beans: 100, garri: 60, spag: 70, 
     n_single: 200, n_carton: 30, 
@@ -13,7 +12,6 @@ const defaultInventory = {
 
 let inventory = JSON.parse(localStorage.getItem('bloss_inventory'));
 
-// AUTO-FIX: If the inventory is old or missing the new separated noodle keys, reset it.
 if (!inventory || inventory.n_single === undefined) {
     inventory = defaultInventory;
     localStorage.setItem('bloss_inventory', JSON.stringify(inventory));
@@ -26,7 +24,7 @@ function toggleCart() {
 }
 
 function toggleChat() { 
-    let c = document.getElementById('ai-chat'); 
+    const c = document.getElementById('ai-chat-box'); // Fixed ID reference
     if(c) c.style.display = (c.style.display === 'block') ? 'none' : 'block'; 
 }
 
@@ -36,8 +34,9 @@ function addToCart(name, price, qtyId) {
     if(!qtyInput) return;
     const qty = parseInt(qtyInput.value);
     
-    // Explicit Key Mapping
+    // EXPLICIT KEY MAPPING (Fixed Spaghetti Link)
     let key = name.toLowerCase().split(' ')[0];
+    if (name.toLowerCase().includes("spag")) key = "spag"; 
     if (name.toLowerCase().includes("tomato")) key = "tomato";
     if (name.toLowerCase().includes("egusi")) key = "egusi";
     if (name.toLowerCase().includes("single")) key = "n_single";
@@ -73,6 +72,9 @@ function addWithUnit(name, selectId, qtyId, key) {
 function removeItem(index) {
     const item = cart[index];
     let key = item.name.toLowerCase().split(' ')[0];
+    
+    // EXPLICIT KEY MAPPING (Fixed Spaghetti Return)
+    if (item.name.toLowerCase().includes("spag")) key = "spag";
     if (item.name.toLowerCase().includes("egg")) key = "eggs";
     if (item.name.toLowerCase().includes("single")) key = "n_single";
     if (item.name.toLowerCase().includes("carton")) key = "n_carton";
@@ -91,7 +93,7 @@ function saveData() {
     updateUI();
 }
 
-// 5. THE UI UPDATE ENGINE (Matches perfectly with HTML)
+// 5. THE UI UPDATE ENGINE
 function updateUI() {
     const cont = document.getElementById('side-cart-items');
     const totS = document.getElementById('side-total');
@@ -112,12 +114,10 @@ function updateUI() {
         if(countS) countS.innerText = cart.length;
     }
 
-    // Force loop through default keys to prevent undefined errors
     Object.keys(defaultInventory).forEach(key => {
         const stockEl = document.getElementById(`stock-${key}`);
         const btnEl = document.getElementById(`btn-${key}`);
         
-        // This injects the exact number into your <span id="stock-..."> tags
         if(stockEl) {
             stockEl.innerText = inventory[key] !== undefined ? inventory[key] : 0;
         }
@@ -132,7 +132,6 @@ function updateUI() {
                     let dName = key.charAt(0).toUpperCase() + key.slice(1);
                     let price = 200; 
 
-                    // Assign prices and names accurately
                     if(key === 'rice') { price = 1900; dName = 'Rice (Congo)'; }
                     else if(key === 'beans') { price = 1700; dName = 'Beans (Congo)'; }
                     else if(key === 'garri') { price = 700; dName = 'Garri (Congo)'; }
@@ -156,13 +155,14 @@ function updateUI() {
 
 function askAI() {
     const input = document.getElementById('chat-input').value.toLowerCase();
-    const box = document.getElementById('chat-box');
+    const box = document.getElementById('chat-messages'); // Fixed ID
     let res = "Please contact 09033448814 for direct assistance!";
-    if(input.includes("price")) res = "Rice: ₦1,900 | Beans: ₦1,700 | Garri: ₦700 | Egusi: ₦600.";
-    if(input.includes("delivery")) res = "We deliver to FUNAAB hostels. Fee for off-campus areas is ₦500.";
     
-    box.innerHTML += `<div style="text-align:right; color:var(--gold);">You: ${input}</div>`;
-    box.innerHTML += `<div style="margin-bottom:10px; color:white;">AI: ${res}</div>`;
+    if(input.includes("price")) res = "Rice: ₦1,900 | Beans: ₦1,700 | Garri: ₦700 | Spaghetti: ₦1,100.";
+    if(input.includes("delivery")) res = "We deliver to FUNAAB hostels. Fee for off-campus areas is ₦500.";
+
+    box.innerHTML += `<div class="user-msg">You: ${input}</div>`;
+    box.innerHTML += `<div class="bot-msg">AI: ${res}</div>`;
     document.getElementById('chat-input').value = "";
     box.scrollTop = box.scrollHeight;
 }
@@ -190,3 +190,4 @@ function sendOrder() {
 }
 
 window.onload = () => { updateUI(); };
+    
