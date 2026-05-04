@@ -82,3 +82,51 @@
 
 </body>
 </html>
+<h3 style="color: var(--gold); text-align: center;">Delivery Details</h3>
+            <p style="font-size: 0.65rem; color: var(--gold-bright); text-align: center; margin-bottom: 15px;">
+                * FREE for school hostels. ₦500 for off-campus.
+            </p>
+
+            <label style="font-size: 0.8rem;">Your Name</label>
+            <input type="text" id="cust-name" placeholder="Enter your name">
+
+            <label style="font-size: 0.8rem;">Detailed Address (Hostel & Room No)</label>
+            <textarea id="cust-address" rows="3" placeholder="e.g. Mandela Hostel, Room 202"></textarea>
+
+            <button class="confirm-btn" onclick="sendToWhatsApp()">Confirm on WhatsApp</button>
+        </div>
+
+    </div>
+
+    <script>
+        function sendToWhatsApp() {
+            // Your number formatted for the WhatsApp API (Country Code + Number minus the first 0)
+            const phoneNumber = "2349033448814"; 
+
+            // Grabbing the information the user typed in
+            const name = document.getElementById('cust-name').value;
+            const address = document.getElementById('cust-address').value;
+            const total = document.getElementById('order-total').innerText;
+
+            // Ensure the user actually filled out the form before sending
+            if (name === "" || address === "") {
+                alert("Please enter your name and address before confirming.");
+                return;
+            }
+
+            // Formatting the message that will appear in your WhatsApp chat
+            const message = `*New Order from Bloss Foods*%0A%0A` +
+                            `*Name:* ${name}%0A` +
+                            `*Address:* ${address}%0A%0A` +
+                            `*Order Detail:* 1x Rice (Congo)%0A` +
+                            `*Subtotal:* ${total}%0A%0A` +
+                            `Please confirm my order!`;
+
+            // Opening the WhatsApp link in a new tab
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+
+</body>
+</html>
