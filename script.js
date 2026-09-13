@@ -110,8 +110,11 @@ const PRODUCTS = [
         id: 'n_single',
         name: 'Noodles',
         category: 'Noodles & Pasta',
-        price: 250,
-        stock: 200
+        stock: 200,
+        variants: [
+            { label: 'Single', price: 250 },
+            { label: 'Carton', price: 10000 }
+        ]
     },
     {
         id: 'macaroni',
@@ -371,7 +374,7 @@ const BUNDLES = [
             { id: 'pepper', qty: 2 },
             { id: 'sugar', qty: 2, variant: 'Per Piece' },
             { id: 'groundnut', qty: 2 },
-            { id: 'n_single', qty: 10 },
+            { id: 'n_single', qty: 10, variant: 'Single' },
             { id: 'spaghetti', qty: 2, variant: 'Small' },
             { id: 'macaroni', qty: 1 },
             { id: 'maggi', qty: 1 },
