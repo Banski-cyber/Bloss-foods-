@@ -54,9 +54,9 @@
             renderShop(window.currentCategory, window.currentSearch);
         }
 
-        const categories = ['All', ...new Set(PRODUCTS.map(p => p.category)), 'Favorites'];
+        const categories = ['All', ...new Set(PRODUCTS.map(p => p.category)), 'Student Packages', 'Favorites'];
         document.getElementById('category-chips').innerHTML = categories.map(c =>
-            `<button class="chip ${c === 'All' ? 'active' : ''}" data-cat="${c}" onclick="selectCategory('${c}')">${c === 'Favorites' ? '♥ Favorites' : c}</button>`
+            `<button class="chip ${c === 'All' ? 'active' : ''}" data-cat="${c}" onclick="selectCategory('${c}')">${c === 'Favorites' ? '♥ Favorites' : c === 'Student Packages' ? '🎓 Packages' : c}</button>`
         ).join('');
 
         renderShop();

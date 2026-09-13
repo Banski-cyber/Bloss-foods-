@@ -17,13 +17,6 @@ const PRODUCTS = [
         stock: 100
     },
     {
-        id: 'beans_congo',
-        name: 'Beans (Congo)',
-        category: 'Grains & Staples',
-        price: 1700,
-        stock: 100
-    },
-    {
         id: 'beans_honey',
         name: 'Honey Beans',
         category: 'Grains & Staples',
@@ -46,7 +39,7 @@ const PRODUCTS = [
     },
     {
         id: 'semovita',
-        name: 'Semovita',
+        name: 'Semo',
         category: 'Grains & Staples',
         price: 1800,
         stock: 50
@@ -73,17 +66,10 @@ const PRODUCTS = [
         stock: 50
     },
     {
-        id: 'v_oil',
-        name: 'Vegetable Oil (Bottle)',
-        category: 'Oils & Proteins',
-        price: 2500,
-        stock: 50
-    },
-    {
         id: 'groundnut_oil',
         name: 'Groundnut Oil',
         category: 'Oils & Proteins',
-        price: 2100,
+        price: 2200,
         stock: 40
     },
     {
@@ -121,55 +107,18 @@ const PRODUCTS = [
         ]
     },
     {
-        id: 'twist_gp',
-        name: 'Twist (Golden Penny)',
-        category: 'Noodles & Pasta',
-        stock: 50,
-        variants: [
-            {
-                label: 'Small',
-                price: 550
-            },
-            {
-                label: 'Large',
-                price: 1100
-            }
-        ]
-    },
-    {
         id: 'n_single',
-        name: 'Noodles (Single)',
+        name: 'Noodles',
         category: 'Noodles & Pasta',
         price: 250,
         stock: 200
     },
     {
-        id: 'n_carton',
-        name: 'Noodles (Carton)',
+        id: 'macaroni',
+        name: 'Macaroni',
         category: 'Noodles & Pasta',
-        price: 10000,
-        stock: 30
-    },
-    {
-        id: 'indomitable',
-        name: 'Indomie Indomitable (Carton)',
-        category: 'Noodles & Pasta',
-        price: 10500,
-        stock: 15
-    },
-    {
-        id: 'mimee',
-        name: 'Mimee (Carton)',
-        category: 'Noodles & Pasta',
-        price: 8500,
-        stock: 15
-    },
-    {
-        id: 'indomie_onion',
-        name: 'Indomie Onion Chicken (Carton)',
-        category: 'Noodles & Pasta',
-        price: 12000,
-        stock: 15
+        price: 1000,
+        stock: 50
     },
     {
         id: 'sugar',
@@ -196,7 +145,7 @@ const PRODUCTS = [
     },
     {
         id: 'dano_roll',
-        name: 'Dano Milk (Roll)',
+        name: 'Milk Roll',
         category: 'Beverages & Cereals',
         price: 1400,
         stock: 30
@@ -207,22 +156,6 @@ const PRODUCTS = [
         category: 'Beverages & Cereals',
         price: 250,
         stock: 40
-    },
-    {
-        id: 'custard_3in1',
-        name: '3-in-1 Custard',
-        category: 'Beverages & Cereals',
-        stock: 40,
-        variants: [
-            {
-                label: 'Single',
-                price: 250
-            },
-            {
-                label: 'Roll',
-                price: 2500
-            }
-        ]
     },
     {
         id: 'cornflakes',
@@ -253,13 +186,6 @@ const PRODUCTS = [
         stock: 30
     },
     {
-        id: 'curry_masala',
-        name: 'Curry Masala',
-        category: 'Seasoning & Spices',
-        price: 700,
-        stock: 50
-    },
-    {
         id: 'curry_thyme',
         name: 'Curry & Thyme (Roll)',
         category: 'Seasoning & Spices',
@@ -272,22 +198,6 @@ const PRODUCTS = [
         category: 'Seasoning & Spices',
         price: 250,
         stock: 40
-    },
-    {
-        id: 'gino_pepper',
-        name: 'Gino Pepper',
-        category: 'Seasoning & Spices',
-        stock: 40,
-        variants: [
-            {
-                label: 'Single',
-                price: 200
-            },
-            {
-                label: 'Roll',
-                price: 900
-            }
-        ]
     },
     {
         id: 'party_jollof',
@@ -304,32 +214,11 @@ const PRODUCTS = [
         stock: 40
     },
     {
-        id: 'tomato',
-        name: 'Tomato Paste',
-        category: 'Seasoning & Spices',
-        price: 200,
-        stock: 100
-    },
-    {
-        id: 'pepper',
-        name: 'Pepper',
-        category: 'Seasoning & Spices',
-        price: 200,
-        stock: 100
-    },
-    {
         id: 'maggi',
         name: 'Maggi',
         category: 'Seasoning & Spices',
         price: 50,
         stock: 150
-    },
-    {
-        id: 'knorr_maggi',
-        name: 'Knorr Maggi (50 Cubes)',
-        category: 'Seasoning & Spices',
-        price: 2300,
-        stock: 20
     },
     {
         id: 'chicken_flavour',
@@ -346,11 +235,18 @@ const PRODUCTS = [
         stock: 30
     },
     {
-        id: 'jumbo_maggi',
-        name: 'Jumbo Maggi (12 Cubes)',
+        id: 'dangote_salt',
+        name: 'Dangote Salt',
+        category: 'Seasoning & Spices',
+        price: 450,
+        stock: 50
+    },
+    {
+        id: 'tomato',
+        name: 'Tomato Paste',
         category: 'Seasoning & Spices',
         price: 200,
-        stock: 40
+        stock: 100
     },
     {
         id: 'salt',
@@ -360,40 +256,10 @@ const PRODUCTS = [
         stock: 100
     },
     {
-        id: 'dangote_salt',
-        name: 'Dangote Salt',
+        id: 'pepper',
+        name: 'Pepper',
         category: 'Seasoning & Spices',
-        price: 450,
-        stock: 50
-    },
-    {
-        id: 'activa_oil',
-        name: 'Activa Vegetable Oil',
-        category: 'Seasoning & Spices',
-        stock: 40,
-        variants: [
-            {
-                label: 'Single',
-                price: 150
-            },
-            {
-                label: 'Roll',
-                price: 1300
-            }
-        ]
-    },
-    {
-        id: 'onions',
-        name: 'Onions (3 pcs)',
-        category: 'Household & Fresh',
         price: 200,
-        stock: 60
-    },
-    {
-        id: 'matches',
-        name: 'Matches (3 pcs)',
-        category: 'Household & Fresh',
-        price: 100,
         stock: 100
     },
     {
@@ -402,20 +268,6 @@ const PRODUCTS = [
         category: 'Household & Fresh',
         price: 600,
         stock: 30
-    },
-    {
-        id: 'closeup',
-        name: 'Close Up Toothpaste',
-        category: 'Household & Fresh',
-        price: 600,
-        stock: 40
-    },
-    {
-        id: 'colgate',
-        name: 'Colgate Toothpaste',
-        category: 'Household & Fresh',
-        price: 600,
-        stock: 40
     },
     {
         id: 'checkers_peanut',
@@ -430,9 +282,117 @@ const PRODUCTS = [
         category: 'Snacks & Extras',
         price: 50,
         stock: 80
+    },
+    {
+        id: 'biscuits',
+        name: 'Biscuits / Cookies',
+        category: 'Snacks & Extras',
+        stock: 30,
+        variants: [
+            { label: 'Small', price: 600 },
+            { label: 'Medium', price: 1500 },
+            { label: 'Big', price: 3500 }
+        ]
+    },
+    {
+        id: 'caprisonne',
+        name: 'Caprisonne',
+        category: 'Snacks & Extras',
+        price: 400,
+        stock: 40
+    },
+    {
+        id: 'bobo',
+        name: 'Bobo',
+        category: 'Snacks & Extras',
+        price: 350,
+        stock: 40
+    },
+    {
+        id: 'fanta',
+        name: 'Fanta',
+        category: 'Snacks & Extras',
+        price: 400,
+        stock: 50
+    },
+    {
+        id: 'pepsi',
+        name: 'Pepsi',
+        category: 'Snacks & Extras',
+        price: 400,
+        stock: 50
     }
 ];
+
 const PRODUCT_MAP = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
+
+// ============ STUDENT PACKAGES (bundle deals) ============
+// Each tier keeps the same base items and adds more on top — not cumulative multiples.
+const BUNDLES = [
+    {
+        id: 'pkg_5k',
+        name: '5K Student Package',
+        price: 5000,
+        contents: [
+            { id: 'rice', qty: 1 },
+            { id: 'garri', qty: 1 },
+            { id: 'groundnut_oil', qty: 1 },
+            { id: 'tomato', qty: 1 },
+            { id: 'biscuits', qty: 1, variant: 'Small' }
+        ]
+    },
+    {
+        id: 'pkg_10k',
+        name: '10K Student Package',
+        price: 10000,
+        contents: [
+            { id: 'rice', qty: 2 },
+            { id: 'garri', qty: 2 },
+            { id: 'groundnut_oil', qty: 2 },
+            { id: 'tomato', qty: 2 },
+            { id: 'biscuits', qty: 2, variant: 'Small' },
+            { id: 'salt', qty: 1 },
+            { id: 'pepper', qty: 1 },
+            { id: 'sugar', qty: 1, variant: 'Per Piece' },
+            { id: 'groundnut', qty: 1 }
+        ]
+    },
+    {
+        id: 'pkg_20k',
+        name: '20K Student Package',
+        price: 20000,
+        contents: [
+            { id: 'rice', qty: 4 },
+            { id: 'garri', qty: 4 },
+            { id: 'groundnut_oil', qty: 4 },
+            { id: 'tomato', qty: 4 },
+            { id: 'biscuits', qty: 4, variant: 'Small' },
+            { id: 'salt', qty: 2 },
+            { id: 'pepper', qty: 2 },
+            { id: 'sugar', qty: 2, variant: 'Per Piece' },
+            { id: 'groundnut', qty: 2 },
+            { id: 'n_single', qty: 10 },
+            { id: 'spaghetti', qty: 2, variant: 'Small' },
+            { id: 'macaroni', qty: 1 },
+            { id: 'maggi', qty: 1 },
+            { id: 'gino_paste', qty: 1 }
+        ]
+    }
+];
+
+function describeBundleContents(bundle) {
+    return bundle.contents.map(c => {
+        const p = PRODUCT_MAP[c.id];
+        const name = p ? p.name : c.id;
+        const variantTxt = c.variant ? ` (${c.variant})` : '';
+        return `${c.qty}x ${name}${variantTxt}`;
+    }).join(', ');
+}
+
+function bundleInStock(bundle) {
+    return bundle.contents.every(c => (inventory[c.id] ?? 0) >= c.qty);
+}
+
 
 // ============ STATE ============
 let cart = JSON.parse(localStorage.getItem('bloss_cart')) || [];
@@ -495,6 +455,11 @@ function renderShop(filterCategory, searchTerm) {
     const grid = document.getElementById('product-grid');
     if (!grid) return; // not on the shop page
 
+    if (filterCategory === 'Student Packages') {
+        renderBundles(grid);
+        return;
+    }
+
     const term = (searchTerm || '').toLowerCase();
     const visible = PRODUCTS.filter(p => {
         let matchesCategory;
@@ -554,6 +519,22 @@ function renderShop(filterCategory, searchTerm) {
     }).join('');
 }
 
+function renderBundles(grid) {
+    grid.innerHTML = BUNDLES.map(b => {
+        const canAdd = bundleInStock(b);
+        return `
+            <div class="card ${canAdd ? '' : 'out-of-stock'}" style="text-align:left;">
+                <span class="category-tag">STUDENT PACKAGE</span>
+                <h3>${b.name}</h3>
+                <p class="price-tag">₦${b.price.toLocaleString()}</p>
+                <p style="font-size:0.8rem; opacity:0.8; margin-bottom:15px;">Includes: ${describeBundleContents(b)}</p>
+                ${canAdd
+                    ? `<button class="add-btn" onclick="addBundleToCart('${b.id}')">Add Package to Cart</button>`
+                    : `<button class="add-btn out-of-stock-btn" disabled>ITEM OUT OF STOCK</button>`}
+            </div>`;
+    }).join('');
+}
+
 // ============ CART CORE LOGIC ============
 function addToCart(productId) {
     const product = PRODUCT_MAP[productId];
@@ -585,10 +566,41 @@ function addToCart(productId) {
     saveData();
 }
 
+function addBundleToCart(bundleId) {
+    const bundle = BUNDLES.find(b => b.id === bundleId);
+    if (!bundle) return;
+
+    if (!bundleInStock(bundle)) {
+        showToast('One or more items in this package are out of stock.', 'error');
+        return;
+    }
+
+    bundle.contents.forEach(c => { inventory[c.id] -= c.qty; });
+
+    cart.push({
+        id: Date.now(),
+        productId: bundle.id,
+        name: bundle.name,
+        price: bundle.price,
+        qty: 1,
+        total: bundle.price,
+        bundleContents: bundle.contents
+    });
+
+    showToast(`Added ${bundle.name} to basket`);
+    saveData();
+}
+
 function removeItem(index) {
     const item = cart[index];
-    if (item && inventory[item.productId] !== undefined) {
-        inventory[item.productId] += item.qty;
+    if (item) {
+        if (item.bundleContents) {
+            item.bundleContents.forEach(c => {
+                if (inventory[c.id] !== undefined) inventory[c.id] += c.qty;
+            });
+        } else if (inventory[item.productId] !== undefined) {
+            inventory[item.productId] += item.qty;
+        }
     }
     cart.splice(index, 1);
     saveData();
