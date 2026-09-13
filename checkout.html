@@ -16,10 +16,10 @@
     <div class="checkout-wrapper">
         <div class="order-review-container">
             <h3 style="color: var(--gold); text-align: center; margin-bottom: 15px;">Order Review</h3>
-            
+
             <div id="checkout-items-list"></div>
 
-            <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); pt-10">
+            <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
                 <div style="display: flex; justify-content: space-between; margin-top: 10px;">
                     <span>Subtotal:</span>
                     <span id="order-subtotal">₦0</span>
@@ -47,7 +47,7 @@
             <label style="font-size: 0.8rem;">Detailed Address (Hostel & Room No)</label>
             <textarea id="cust-address" rows="3" placeholder="e.g. Mandela Hostel, Room 202" oninput="calculateTotal()"></textarea>
 
-            <button class="confirm-btn" onclick="sendToWhatsApp()">Confirm on WhatsApp</button>
+            <button class="confirm-btn" id="confirm-btn" onclick="handleConfirm()">Confirm on WhatsApp</button>
         </div>
     </div>
 
@@ -57,39 +57,33 @@
 
     <script src="script.js"></script>
     <script>
-        // 1. Load data from LocalStorage
-        let checkoutCart = JSON.parse(localStorage.getItem('bloss_cart')) || [];
-
         function displayOrder() {
             const listContainer = document.getElementById('checkout-items-list');
             let subtotal = 0;
 
-            if (checkoutCart.length === 0) {
+            if (cart.length === 0) {
                 listContainer.innerHTML = "<p style='text-align:center; opacity:0.5;'>Your basket is empty!</p>";
-                return;
+            } else {
+                listContainer.innerHTML = cart.map(item => {
+                    subtotal += item.total;
+                    return `
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 8px 0;">
+                        <span>${item.qty}x ${item.name}</span>
+                        <span style="font-size: 0.9rem;">₦${item.total.toLocaleString()}</span>
+                    </div>`;
+                }).join('');
             }
 
-            listContainer.innerHTML = checkoutCart.map((item, index) => {
-                subtotal += item.total;
-                return `
-                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 8px 0;">
-                    <span>${item.qty}x ${item.name}</span>
-                    <span style="font-size: 0.9rem;">₦${item.total.toLocaleString()}</span>
-                </div>`;
-            }).join('');
-
             document.getElementById('order-subtotal').innerText = `₦${subtotal.toLocaleString()}`;
-            calculateTotal(); 
+            calculateTotal();
         }
 
         function calculateTotal() {
             const address = document.getElementById('cust-address').value.toLowerCase();
-            const subtotal = checkoutCart.reduce((sum, item) => sum + item.total, 0);
-            
-            // Logic for Delivery Fee
+            const subtotal = cart.reduce((sum, item) => sum + item.total, 0);
+
             const offCampusKeywords = ['camp', 'oluwo', 'isolu', 'harmony', 'accord', 'kofesu'];
             let fee = 0;
-            
             if (address !== "") {
                 const isOffCampus = offCampusKeywords.some(keyword => address.includes(keyword));
                 fee = isOffCampus ? 500 : 0;
@@ -99,45 +93,14 @@
             document.getElementById('order-final-total').innerText = `₦${(subtotal + fee).toLocaleString()}`;
         }
 
-        function sendToWhatsApp() {
-            const phoneNumber = "2349033448814"; 
-            const name = document.getElementById('cust-name').value;
-            const address = document.getElementById('cust-address').value;
-            const finalTotal = document.getElementById('order-final-total').innerText;
-            const deliveryFee = document.getElementById('delivery-fee-display').innerText;
-
-            if (name === "" || address === "") {
-                alert("Please enter your name and address.");
-                return;
-            }
-
-            if (checkoutCart.length === 0) {
-                alert("Your cart is empty!");
-                return;
-            }
-
-            // Build item list for WhatsApp
-            let itemDetails = "";
-            checkoutCart.forEach(item => {
-                itemDetails += `- ${item.qty}x ${item.name} (₦${item.total.toLocaleString()})%0A`;
-            });
-
-            const message = `*New Order from Bloss Foods*%0A%0A` +
-                            `*Name:* ${name}%0A` +
-                            `*Address:* ${address}%0A%0A` +
-                            `*Items:*%0A${itemDetails}%0A` +
-                            `*Delivery Fee:* ${deliveryFee}%0A` +
-                            `*Grand Total:* ${finalTotal}%0A%0A` +
-                            `Please confirm my order!`;
-
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-            
-            // Clear cart after successful order
-            localStorage.removeItem('bloss_cart');
+        function handleConfirm() {
+            const name = document.getElementById('cust-name').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            sendOrder(name, address);
+            displayOrder(); // cart is now empty on success
         }
 
-        // Run on load
-        window.onload = displayOrder;
+        displayOrder();
     </script>
 </body>
 </html>
